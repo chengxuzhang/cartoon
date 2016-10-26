@@ -105,6 +105,7 @@
 				    // html += '				</div>';
 					html += '			</div>';
 					html += '           <div id="picList" class="upload_preview"></div>';
+					html += '           <div id="pageList" class="pagination"></div>';
 					html += '		</div>';
 					html += '		<div class="upload_submit">';
 					html += '			<button type="button" id="fileSubmit" class="upload_submit_btn">确认上传文件</button>';
@@ -145,7 +146,7 @@
 			};
 
 			this.funGetPicList = function(){
-				var html = '';
+				var perPage = 10;
 				var imgWidth = parseInt(para.itemWidth.replace("px", ""))-15;
 
 				// 处理配置参数删除按钮
@@ -154,24 +155,43 @@
 					delHtml = '<span class="file_del" title="删除"></span>';
 				}
 
-				$.getJSON(para.picUrl,function(data){
-					$.each(data.data,function(k,v){
-						html += '<div class="upload_append_list">';
-						html += '	<div class="file_bar">';
-						html += '		<div style="padding:5px;">';
-						html += '			<p class="file_name">' + v.name + '</p>';
-						html += delHtml;   // 删除按钮的html
-						html += '		</div>';
-						html += '	</div>';
-						html += '	<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" href="#" class="imgBox">';
-						html += '		<div class="uploadImg" style="width:'+imgWidth+'px">';				
-						html += '			<img class="upload_image" src="' + v.url + '" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';                                                                 
-						html += '		</div>';
-						html += '	</a>';
-						html += '</div>';
+				var pageselectCallback = function(page_index, jq){
+					var html = '';
+					$.getJSON(para.picUrl,{perPage:perPage,page:page_index},function(data){
+						$.each(data.data,function(k,v){
+							html += '<div class="upload_append_list">';
+							html += '	<div class="file_bar">';
+							html += '		<div style="padding:5px;">';
+							html += '			<p class="file_name">' + v.name + '</p>';
+							html += delHtml;   // 删除按钮的html
+							html += '		</div>';
+							html += '	</div>';
+							html += '	<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" href="#" class="imgBox">';
+							html += '		<div class="uploadImg" style="width:'+imgWidth+'px">';				
+							html += '			<img class="upload_image" src="/cartoon/dist/upload/' + v.url + '" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';                                                                 
+							html += '		</div>';
+							html += '	</a>';
+							html += '</div>';
+						});
+						$("#picList").html(html);
 					});
-					$("#picList").html(html);
-				});
+				}
+
+				var showPageList = function(){
+					$.getJSON(para.picUrl,function(data){
+						var num_entries = data.total;
+						// 创建分页
+						$("#pageList").pagination(num_entries, {
+							num_edge_entries: 1, //边缘页数
+							num_display_entries: 4, //主体页数
+							callback: pageselectCallback,
+							items_per_page: perPage, //每页显示1项
+							prev_text: "前一页",
+							next_text: "后一页"
+						});
+					});
+				}
+				showPageList();
 			}
 			
 			/**

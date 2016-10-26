@@ -4,7 +4,7 @@ $(function(){
 		// 初始化插件
 		$("#upload").zyUpload({
 			width            :   "646px",                 // 宽度
-			height           :   "400px",                 // 宽度
+			height           :   "350px",                 // 宽度
 			itemWidth        :   "124px",                 // 文件项的宽度
 			itemHeight       :   "100px",                 // 文件项的高度
 			url              :   "/cartoon/dist/upload/upload.php",  // 上传文件的路径
