@@ -96,11 +96,11 @@
 		            html += '			</div>';
 		            html += '			<div id="preview" class="upload_preview">';
 				    html += '				<div class="add_upload">';
-				    html += '					<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" title="点击添加文件" id="rapidAddImg" class="add_imgBox" href="javascript:void(0)">';
-				    html += '						<div class="uploadImg" style="width:'+imgWidth+'px">';
-				    html += '							<img class="upload_image" src="control/images/add_img.png" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';
-				    html += '						</div>';
-				    html += '					</a>';
+				    // html += '					<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" title="点击添加文件" id="rapidAddImg" class="add_imgBox" href="javascript:void(0)">';
+				    // html += '						<div class="uploadImg" style="width:'+imgWidth+'px">';
+				    // html += '							<img class="upload_image" src="control/images/add_img.png" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';
+				    // html += '						</div>';
+				    // html += '					</a>';
 				    html += '				</div>';
 					html += '			</div>';
 					html += '		</div>';

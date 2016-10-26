@@ -28,8 +28,8 @@ pre{font-family:'simsun';}
 .upload_choose{padding:1em;}
 .upload_drag_area{display:inline-block; width:63%; padding:4em 0; margin-left:.5em; border:1px dashed #ddd; background:#fff no-repeat 20px center; color:#999; text-align:center; vertical-align:middle;}
 .upload_drag_hover{border-color:#069; box-shadow:inset 2px 2px 4px rgba(0, 0, 0, .5); color:#333;}
-.upload_preview{border-top:1px solid #D2D2D2; /*border-bottom:1px solid #bbb;*/ background-color:#fff; /*overflow:hidden;*/ _zoom:1;}
-.upload_append_list{height:100%; margin:1em; float:left; position:relative;}
+.upload_preview{border-top:1px solid #D2D2D2; border-bottom:1px solid #bbb; background-color:#fff; /*overflow:hidden;*/ _zoom:1;}
+.upload_append_list{height:100%; margin:1em; /*float:left;*/ position:relative;display:inline-block;}
 .upload_append_list:hover{cursor:pointer;}
 .upload_delete{margin-left:2em;}
 .upload_image{/* max-height:135px; */ padding:0px;}
@@ -252,15 +252,13 @@ pre{font-family:'simsun';}
 
 /* 设置图片等比例缩放 并且垂直居中*/
 .upload_append_list a {
-	/*display: table-cell;*/
+	display: table-cell;
    /*  width: 140px;	
     height: 120px; */
     text-align: center;
     vertical-align: middle;
     border: 1px solid #DFDFDF;
     background: url("../images/bg.png") no-repeat scroll center 0px transparent;
-    overflow: hidden;
-    display:inline-block;
 }
 .upload_append_list img {
 	border: solid 1px #66f;
@@ -281,7 +279,6 @@ pre{font-family:'simsun';}
 	margin:1em; 
 	float:left; 
 	position:relative;
-	display:none;
 }
 .add_upload:hover{
 	cursor:pointer;
@@ -302,10 +299,3 @@ pre{font-family:'simsun';}
 .single_main{
 	border-top:0px;
 }
-
- /* www.jq22.com */
-
-
-
-
-
