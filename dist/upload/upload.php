@@ -1,4 +1,4 @@
-<?php
+<?php 
 if ((($_FILES["fileList"]["type"] == "image/gif")
 || ($_FILES["fileList"]["type"] == "image/jpeg")
 || ($_FILES["fileList"]["type"] == "image/pjpeg"))
@@ -9,7 +9,7 @@ if ((($_FILES["fileList"]["type"] == "image/gif")
 	    echo "Upload: " . $_FILES["fileList"]["name"] . "<br />";
 	    echo "Type: " . $_FILES["fileList"]["type"] . "<br />";
 	    echo "Size: " . ($_FILES["fileList"]["size"] / 1024) . " Kb<br />";
-	    echo "Temp fileList: " . $_FILES["fileList"]["tmp_name"] . "<br />";
+	    echo "Temp file: " . $_FILES["fileList"]["tmp_name"] . "<br />";
 	    if (file_exists("upload/" . $_FILES["fileList"]["name"])){
 	      	echo $_FILES["fileList"]["name"] . " already exists. ";
 	    }else{
@@ -19,7 +19,7 @@ if ((($_FILES["fileList"]["type"] == "image/gif")
     	}
     }
 }else{
-  	echo "Invalid fileList";
+  	echo "Invalid file";
 }
 die;
 ?>

@@ -4,6 +4,7 @@ html,body{
 	background: #ffffff;
 	overflow: hidden;
 	scroll:hidden;
+	-moz-user-select: none; -khtml-user-select: none; user-select: none;
 }
 body{
 	font:12px/1.5 \5fae\8f6f\96c5\9ed1;

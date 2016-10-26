@@ -12,9 +12,7 @@ $(function(){
 	var params;
 	$(document).on('click','.list-group-item',function(){
 		params = $(this).attr("data-params");
-		// console.log(params);
 		var new_params = eval('(' + params + ')');
-		// console.log(new_params);
 		word.run(new_params);
 	})
 })
