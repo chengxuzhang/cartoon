@@ -24,12 +24,12 @@ pre{font-family:'simsun';}
 #back{margin-top:-25px; position:absolute; right:10px;}
 
 .upload_box{ margin:1em auto;}
-.upload_main{border-width:1px 1px 2px; border-style:solid; border-color:#ccc #ccc #ddd; background-color:#fbfbfb;}
+.upload_main{/*border-width:1px 1px 2px; border-style:solid;*/ border-color:#ccc #ccc #ddd; background-color:#fbfbfb;}
 .upload_choose{padding:1em;}
 .upload_drag_area{display:inline-block; width:63%; padding:4em 0; margin-left:.5em; border:1px dashed #ddd; background:#fff no-repeat 20px center; color:#999; text-align:center; vertical-align:middle;}
 .upload_drag_hover{border-color:#069; box-shadow:inset 2px 2px 4px rgba(0, 0, 0, .5); color:#333;}
-.upload_preview{border-top:1px solid #D2D2D2; border-bottom:1px solid #bbb; background-color:#fff; /*overflow:hidden;*/ _zoom:1;}
-.upload_append_list{height:100%; margin:1em; /*float:left;*/ position:relative;display:inline-block;}
+.upload_preview{/*border-top:1px solid #D2D2D2; border-bottom:1px solid #bbb;*/ background-color:#fff; /*overflow:hidden;*/ _zoom:1;}
+.upload_append_list{height:100%; margin:2px; /*float:left;*/ position:relative;display:inline-block;}
 .upload_append_list:hover{cursor:pointer;}
 .upload_delete{margin-left:2em;}
 .upload_image{/* max-height:135px; */ padding:0px;}
@@ -85,10 +85,10 @@ pre{font-family:'simsun';}
 }
 
 .status_bar{
-	border-top: 1px solid #DADADA;
+	/*border-top: 1px solid #DADADA;*/
     height: 45px;
     line-height: 45px;
-    padding: 0 10px;
+    /*padding: 0 10px;*/
     position: relative;
     vertical-align: middle;
     background-color: #FFFFFF;
@@ -100,12 +100,12 @@ pre{font-family:'simsun';}
 }
 .btns{
 	position: absolute;
-	right: 16px;
+	/*right: 16px;*/
 	line-height: 30px;
     top: 6px;
 }
 .webuploader_pick{
-	-moz-user-select: none;
+	/*-moz-user-select: none;
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #CFCFCF;
     border-radius: 3px;
@@ -122,10 +122,27 @@ pre{font-family:'simsun';}
     transition: border 0.2s;
 	-moz-transition: border 0.2s;
 	-webkit-transition: border 0.2s;
-	-o-transition: border 0.2s;
+	-o-transition: border 0.2s;*/
+	background: none repeat scroll 0 0 #00B7EE;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-left: 3px;
+    padding: 0 18px;
+    position: relative;
+    text-align: center;
+    line-height: 34px;
+    transition: background 0.2s;
+	-moz-transition: background 0.2s;
+	-webkit-transition: background 0.2s;
+	-o-transition: background 0.2s;
 }
 .webuploader_pick:hover{
-	border: 1px solid #BBB;
+	/*border: 1px solid #BBB;*/
+	background: none repeat scroll 0 0 #00A2D4;
 }
 .upload_btn{
     background: none repeat scroll 0 0 #00B7EE;
@@ -297,5 +314,5 @@ pre{font-family:'simsun';}
 	border: 1px solid #BBB;
 }
 .single_main{
-	border-top:0px;
+	/*border-top:0px;*/
 }
