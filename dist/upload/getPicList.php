@@ -9,6 +9,7 @@ $list = [
 		['name'=>3,'url'=>'/upload/3.jpeg'],
 		['name'=>3,'url'=>'/upload/3.jpeg'],
 		['name'=>3,'url'=>'/upload/3.jpeg'],
+		['name'=>3,'url'=>'/upload/3.jpeg'],
 	],
 ];
 echo json_encode($list);die;
