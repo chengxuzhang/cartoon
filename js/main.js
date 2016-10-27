@@ -108,6 +108,7 @@ $(function(){
 	var jsTools = [
 		'tools/canvas.js',
 		'tools/word.js',
+		'tools/pic.js',
 		'tools/content.js',
 		'tools/attr.js',
 		'plugins/right.js',

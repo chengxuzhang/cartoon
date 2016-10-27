@@ -116,7 +116,8 @@
 				}
 				
 	            $(self).append(html).css({"width":para.width,"height":para.height});
-	            
+	            // console.log('createHtml');
+	            this.funGetPicList();
 	            // 初始化html之后绑定按钮的点击事件
 	            this.addEvent();
 			};
@@ -149,16 +150,16 @@
 				var perPage = 10;
 				var imgWidth = parseInt(para.itemWidth.replace("px", ""))-15;
 
-				// 处理配置参数删除按钮
-				var delHtml = "";
-				if(para.del){  // 显示删除按钮
-					delHtml = '<span class="file_del" title="删除"></span>';
-				}
-
 				var pageselectCallback = function(page_index, jq){
 					var html = '';
 					$.getJSON(para.picUrl,{perPage:perPage,page:page_index},function(data){
 						$.each(data.data,function(k,v){
+							// 处理配置参数删除按钮
+							var delHtml = '';
+							if(para.del){  // 显示删除按钮
+								delHtml = '<span class="file_del" data-index="'+v.id+'" title="删除"></span>';
+							}
+
 							html += '<div class="upload_append_list">';
 							html += '	<div class="file_bar">';
 							html += '		<div style="padding:5px;">';
@@ -166,7 +167,7 @@
 							html += delHtml;   // 删除按钮的html
 							html += '		</div>';
 							html += '	</div>';
-							html += '	<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" href="#" class="imgBox">';
+							html += '	<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" href="javascript:void(0);" class="imgBox">';
 							html += '		<div class="uploadImg" style="width:'+imgWidth+'px">';				
 							html += '			<img class="upload_image" src="/cartoon/dist/upload/' + v.url + '" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';                                                                 
 							html += '		</div>';
@@ -174,8 +175,55 @@
 							html += '</div>';
 						});
 						$("#picList").html(html);
+						funBindDelEvent();// 点击删除图片
+						funBindHoverEvent();// 图片详情
+						funBindClickEvent();// 图片点击事件
 					});
 				}
+
+				// 删除某个图片
+				var funDeletePic = function(delFileIndex, url){
+					$.getJSON(url,{id:delFileIndex},function(data){
+						if(data.status == '200'){
+							showPageList();
+						}else{
+							alert("删除失败");
+						}
+					})
+				}
+
+				var funBindClickEvent = function(){
+					if($(".imgBox").length>0){
+						// 删除方法
+						$(".imgBox").click(function() {
+							var img = $(this).find("img").attr("src");
+							pic.run({'src':img});
+							return false;
+						});
+					}
+				}
+
+				// 绑定删除按钮事件
+				var funBindDelEvent = function(){
+					if($(".file_del").length>0){
+						// 删除方法
+						$(".file_del").click(function() {
+							funDeletePic(parseInt($(this).attr("data-index")), para.picUrl);
+							return false;
+						});
+					}
+				};
+						
+				// 绑定显示操作栏事件
+				var funBindHoverEvent = function(){
+					$(".upload_append_list").hover(
+						function (e) {
+							$(this).find(".file_bar").addClass("file_hover");
+						},function (e) {
+							$(this).find(".file_bar").removeClass("file_hover");
+						}
+					);
+				};
 
 				var showPageList = function(){
 					$.getJSON(para.picUrl,function(data){
