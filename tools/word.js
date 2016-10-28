@@ -39,9 +39,23 @@ var word = {
 
 		wordEditorDiv.addEventListener('dblclick', function(e){
 			wordEditorDiv.removeAttribute("readOnly");
+			wordEditorDiv.style.border = '1px solid #eee';
 			wordEditorDiv.style.cursor = 'text';
+			$(".resizeDiv").remove();
+			var oBox = document.getElementById("outBox");
+			oBox.onmousedown = null;
 		},false);
 
-		resize.run(wordEditorDiv);
+		document.onclick = function(event){
+			var event = event || window.event;
+	    	var target = event.target || event.srcElement;
+	    	if($(target).hasClass("word")){
+	    		return false;
+	    	}
+			wordEditorDiv.style.border = 'none';
+			wordEditorDiv.setAttribute("readOnly",'true');
+			wordEditorDiv.style.cursor = 'default';
+		}
+		resize.run(wordEditorDiv,wordResize);
 	},
 };

@@ -28,6 +28,6 @@ var pic = {
 		picEditorDiv.oncontextmenu = function(ev){
 			right.run(_this,ev);return false;
 		}
-		resize.run(picEditorDiv);
+		resize.run(picEditorDiv,picResize);
 	},
 };
