@@ -12,12 +12,7 @@ var word = {
 		{a:'close',b:'关闭'},
 	],
 	run : function(params){
-		this.params.color = params.color || this.params.color;
-		this.params.fontSize = params.fontSize || this.params.fontSize;
-		this.params.html = params.html || this.params.html;
-		this.params.width = params.width || this.params.width;
-		this.params.height = params.height || this.params.height;
-		this.params.fontFamily = params.fontFamily || this.params.fontFamily;
+		this.params = $.extend({},this.params,params);
 		this.createWordEditor();
 	},
 	createWordEditor : function(){
