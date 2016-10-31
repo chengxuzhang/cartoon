@@ -1,17 +1,8 @@
-var oBox = document.getElementById("outBox");
-oBox.onmousedown = function(event){
-	var event = event || window.event;
-	var target = event.target || event.srcElement;
-	if($(target).hasClass("handle") || $(target).hasClass("pic") || $(target).hasClass("word")){
-		return false;
-	}
-	$(".resizeDiv").remove();
-}
 var resize = {
-	run : function(obj,changeBlock){
-		this.createResizeDiv(obj,changeBlock);
+	run : function(obj){
+		this.createResizeDiv(obj);
 	},
-	createResizeDiv : function(obj,changeBlock){
+	createResizeDiv : function(obj){
 		var resizeDiv= document.body.appendChild(document.createElement("div"));
 		resizeDiv.className = 'resizeDiv';
 		resizeDiv.setAttribute("tabindex","1");
@@ -30,7 +21,36 @@ var resize = {
 			<div class="handle w" resize-dir="w"></div>';
 		resizeDiv.innerHTML = html;
 		cartoon.identifier(obj,resizeDiv);// 为元素编号 此编号为它的终身编号
-		changeBlock.changeResizeDiv(resizeDiv,obj);
+		this.changeResizeDiv(resizeDiv,obj);
+	},
+	changeResizeDiv : function(div,obj){
+		var _this = this;
+	    var state = 'default';
+	    $(".handle").mousedown(function(){
+	    	state = $(this).attr("resize-dir");
+	    });
+	    div.onmousedown = function(e){
+	    	_this.resizeOriginal(div,e,state,obj);
+	    }
+	    obj.onmousedown = function(e){
+	    	if(obj.readOnly){
+	    		_this.moveOriginal(obj,e,div);
+	    	}
+	    }
+	    // 临时解决方案
+	    div.onblur = function(){
+	    	div.style.display = 'none';
+	    	obj.setAttribute("readOnly",'true');
+	    	obj.style.cursor = 'default';
+	    }
+	    obj.onfocus = function(){
+	    	$(".resizeDiv").css("display","none");
+	    	$(".word").attr({"readOnly":"true"}).css({"cursor":"default"});
+	    	div.style.display = 'block';
+	    	// console.log(obj.style);
+	    	cartoon.setFocus(obj);
+	    	cartoon.createAttr(attr.create(obj.style)); // 创建属性面板
+	    }
 	},
 	resizeOriginal : function(obj,ev,state,div){
 		var box_old_left = parseInt(obj.style.left);
