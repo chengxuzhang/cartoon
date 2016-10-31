@@ -10,9 +10,7 @@ var pic = {
 		{a:'close',b:'关闭'},
 	],
 	run : function(params){
-		this.params.width = params.width || this.params.width;
-		this.params.height = params.height || this.params.height;
-		this.params.src = params.src || this.params.src;
+		this.params = $.extend({},this.params,params);
 		this.params.html = '<img src="'+this.params.src+'" style="width:100%;height:100%;">';
 		this.createPicEditor();
 	},
