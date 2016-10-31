@@ -112,8 +112,6 @@ $(function(){
 		'tools/content.js',
 		'tools/attr.js',
 		'plugins/right.js',
-		'plugins/resize/word.js',
-		'plugins/resize/pic.js',
 		'plugins/resize.js',
 		'plugins/slider.js',
 	];

@@ -51,6 +51,6 @@ var word = {
 			wordEditorDiv.setAttribute("readOnly",'true');
 			wordEditorDiv.style.cursor = 'default';
 		}
-		resize.run(wordEditorDiv,wordResize);
+		resize.run(wordEditorDiv);
 	},
 };
